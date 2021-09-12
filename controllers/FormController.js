@@ -23,7 +23,7 @@ exports.addForm = async (req, res, next) => {
         const result = await newForm.save();
         const msg = 'Hemos recibido tu solicitud, nos pondremos en contacto lo antes posible contigo.';
         const mailResult = await mailer(email, username, 'FasRev', msg);
-        console.log(mailResult);
+
         res.send({
             OK: 1,
             message: 'Formulario añadido',

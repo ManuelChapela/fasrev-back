@@ -12,8 +12,7 @@ exports.mailer = async (email, usernameTo, usernameFrom, mensaje) => {
             }
         });
     } else {
-        // si no hemos configurado en .env servidor de correo
-        // usamos ethereal.mail para simular un servidor smtp
+        // usamos ethereal.mail para simular un servidor 
         const testAccount = await nodemailer.createTestAccount();
         transporter = nodemailer.createTransport({
             host: 'smtp.ethereal.email',
@@ -45,7 +44,7 @@ exports.mailer = async (email, usernameTo, usernameFrom, mensaje) => {
         from: 'fasrev@email.com',
         to: email,
         subject: `${usernameTo} tienes un mensaje nuevo`,
-        text: `Este es el mensaje que te manda ${usernameFrom}:
+        text: `Este mensaje está enviado por ${usernameFrom}:
     ${mensaje}`,
         html: htmlMail
     };

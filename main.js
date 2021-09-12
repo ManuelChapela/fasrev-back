@@ -10,6 +10,9 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const server = express();
 
+const cors = require("cors");
+server.use(cors())
+
 const PORT = process.env.PORT || 3000;
 
 server.use(express.urlencoded({ extended: false }));

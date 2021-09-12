@@ -2,10 +2,13 @@ const Form = require('../models/Form');
 const { mailer } = require('../utils/mailer');
 
 exports.addForm = async (req, res, next) => {
+    console.log(req.body);
+
     const { username, telephone, email, textField } = req.body;
+
     if (!username || !telephone || !email || !textField) {
         next({
-            status: 400,
+            status: 401,
             message: 'ERROR, todos los campos son requeridos'
         });
     }
@@ -28,11 +31,13 @@ exports.addForm = async (req, res, next) => {
         });
     } catch (error) {
         next({
-            status: 400,
+            status: 402,
             message: `ERROR, Formulario NO añadido:, ${error}`
         });
     }
 };
+
+
 exports.getForms = async (req, res, next) => {
     try {
         const result = await Form.find({}, { _id: 0, __v: 0 });
